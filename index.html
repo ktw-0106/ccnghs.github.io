@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>실시간 랭킹 & 게시판 & 청운우체통</title>
   <style>
   * { box-sizing: border-box; }
@@ -14,7 +15,6 @@
   }
 
   /* 상단 헤더 */
-
   header {
     padding: 12px 24px 16px;
     border-bottom: 1px solid #dbeafe;
@@ -46,7 +46,6 @@
   }
 
   /* 상단 탭 */
-
   .nav-tabs {
     display: flex;
     gap: 8px;
@@ -78,7 +77,6 @@
   }
 
   /* 메인 레이아웃 */
-
   main {
     max-width: 1080px;
     margin: 0 auto;
@@ -92,13 +90,10 @@
   }
 
   @media (max-width: 900px) {
-    .vote-layout {
-      grid-template-columns: 1fr;
-    }
+    .vote-layout { grid-template-columns: 1fr; }
   }
 
   /* 공통 카드 / 패널 */
-
   .panel {
     background: #ffffff;
     border-radius: 18px;
@@ -124,7 +119,6 @@
   }
 
   /* 투표 질문 목록 */
-
   .question-list {
     display: flex;
     flex-direction: column;
@@ -163,7 +157,6 @@
   }
 
   /* 중앙 카드 (투표 질문) */
-
   .card {
     background: #ffffff;
     border-radius: 22px;
@@ -251,7 +244,6 @@
   }
 
   /* 이전/다음 질문 버튼 */
-
   .next-question-btn {
     margin-top: 10px;
     padding: 6px 12px;
@@ -273,7 +265,6 @@
   }
 
   /* 랭킹 */
-
   .ranking-header {
     display: flex;
     justify-content: space-between;
@@ -335,7 +326,6 @@
   }
 
   /* 관리자 */
-
   .admin-toggle {
     font-size: 11px;
     color: #64748b;
@@ -388,9 +378,7 @@
     transition: background 0.08s ease;
   }
 
-  .admin-btn:hover {
-    background: #e0f2fe;
-  }
+  .admin-btn:hover { background: #e0f2fe; }
 
   .admin-btn.danger {
     border-color: #fecaca;
@@ -399,7 +387,6 @@
   }
 
   /* 게시판/우체통 공통 */
-
   .letter-layout {
     display: flex;
     flex-direction: column;
@@ -450,9 +437,7 @@
     resize: vertical;
   }
 
-  .letter-form textarea {
-    min-height: 80px;
-  }
+  .letter-form textarea { min-height: 80px; }
 
   .letter-form input[type="file"] {
     font-size: 12px;
@@ -487,10 +472,7 @@
     overflow-y: auto;
   }
 
-  .letter-item {
-    padding: 8px 0;
-    border-radius: 12px;
-  }
+  .letter-item { padding: 8px 0; border-radius: 12px; }
 
   .letter-header {
     display: flex;
@@ -500,22 +482,9 @@
     padding: 0 4px;
   }
 
-  .letter-name {
-    font-weight: 600;
-    font-size: 13px;
-    color: #0f172a;
-  }
-
-  .letter-tag {
-    font-size: 11px;
-    color: #2563eb;
-    margin-left: 6px;
-  }
-
-  .letter-time {
-    font-size: 11px;
-    color: #6b7280;
-  }
+  .letter-name { font-weight: 600; font-size: 13px; color: #0f172a; }
+  .letter-tag { font-size: 11px; color: #2563eb; margin-left: 6px; }
+  .letter-time { font-size: 11px; color: #6b7280; }
 
   .letter-bubble {
     position: relative;
@@ -561,7 +530,6 @@
   }
 
   /* 답글 */
-
   .reply-list {
     margin-top: 4px;
     margin-left: 24px;
@@ -570,10 +538,7 @@
     gap: 6px;
   }
 
-  .reply-item {
-    display: flex;
-    justify-content: flex-start;
-  }
+  .reply-item { display: flex; justify-content: flex-start; }
 
   .reply-bubble {
     max-width: 100%;
@@ -584,11 +549,7 @@
     font-size: 12px;
   }
 
-  .reply-meta {
-    font-size: 11px;
-    color: #6b7280;
-    margin-bottom: 2px;
-  }
+  .reply-meta { font-size: 11px; color: #6b7280; margin-bottom: 2px; }
 
   .reply-message {
     font-size: 12px;
@@ -641,14 +602,136 @@
     resize: vertical;
   }
 
-  .hidden {
-    display: none !important;
-  }
+  .hidden { display: none !important; }
 
   /* 청운우체통 제목 아이콘 */
   #view-cheongun .letter-title::before {
     content: "📮";
     font-size: 20px;
+  }
+
+  /* =========================================================
+     ✅ 반응형(모바일/태블릿) 자동 배치 패치
+     - 디자인 색/스타일은 그대로
+     - 배치/배열/터치 편의만 변경
+  ========================================================= */
+
+  /* 태블릿/모바일 공통 (900px 이하) */
+  @media (max-width: 900px) {
+    main { padding: 12px; }
+
+    /* 헤더: 세로 정렬 + 탭은 줄바꿈 */
+    header {
+      padding: 10px 12px 12px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .nav-tabs {
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* 탭 버튼: 터치 영역 확대 + 자연스럽게 채우기 */
+    header .nav-tabs .nav-btn {
+      padding: 10px 14px;
+      font-size: 13px;
+      flex: 1 1 auto;
+    }
+
+    /* 투표존: 1열 + “카드 → 질문목록 → 랭킹” 순서 */
+    #view-vote {
+      grid-template-columns: 1fr !important;
+      gap: 12px;
+    }
+
+    /* HTML 구조: aside(panel) / section(card) / aside(panel) */
+    #view-vote > section.card { order: 1; }
+    #view-vote > aside.panel:first-of-type { order: 2; }
+    #view-vote > aside.panel:last-of-type { order: 3; }
+
+    /* 카드: 모바일에서 너무 크지 않게 */
+    .card {
+      padding: 14px 14px 12px;
+      min-height: auto;
+    }
+    .card-title { font-size: 18px; }
+    .card-desc { font-size: 12px; margin-bottom: 10px; }
+
+    /* 투표 입력: 모바일은 세로 정렬 */
+    .vote-form {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+    }
+    .vote-form input {
+      width: 100%;
+      min-width: 0;
+      padding: 12px 12px;
+      font-size: 14px;
+    }
+    .vote-form button {
+      width: 100%;
+      padding: 12px 12px;
+      font-size: 14px;
+    }
+
+    /* 이전/다음 버튼: 모바일에서는 버튼 폭 넓게 */
+    #prev-question-btn,
+    #next-question-btn {
+      width: 100%;
+      align-self: stretch;
+      padding: 11px 12px;
+      font-size: 13px;
+    }
+
+    /* 질문 목록/랭킹: 모바일 스크롤 길이 제한 */
+    .question-list { max-height: 260px; }
+    .ranking-list { max-height: 260px; overflow-y: auto; }
+    .letter-list { max-height: 360px; }
+
+    /* 게시판/우체통/테스트 입력: 터치 편하게 */
+    .letter-form input[type="text"],
+    .letter-form textarea {
+      padding: 12px 12px;
+      font-size: 14px;
+    }
+    .letter-form button {
+      width: 100%;
+      align-self: stretch;
+      padding: 12px 12px;
+      font-size: 14px;
+    }
+
+    /* 답글 폼: 모바일에서 좌측 들여쓰기 줄이기 */
+    .reply-form { margin-left: 0; }
+    .reply-list { margin-left: 12px; }
+    .letter-image { max-height: 220px; }
+  }
+
+  /* 작은 모바일 (600px 이하) */
+  @media (max-width: 600px) {
+    main { padding: 10px; }
+    .logo { font-size: 18px; padding: 7px 14px; }
+    .subtitle { font-size: 11px; }
+
+    /* 상단 탭을 2열 느낌으로(자동 줄바꿈) */
+    header .nav-tabs .nav-btn {
+      flex: 1 1 48%;
+    }
+
+    .panel { border-radius: 14px; }
+    .card { border-radius: 16px; }
+    .card-title { font-size: 17px; }
+  }
+
+  /* 아주 작은 폰 (380px 이하) */
+  @media (max-width: 380px) {
+    header .nav-tabs .nav-btn {
+      flex: 1 1 100%;
+    }
   }
   </style>
 </head>
@@ -867,9 +950,8 @@
     const db = firebase.database();
 
     // ==============================
-    // 공통: 뷰 전환 (투표 / 게시판 / 청운우체통 / 테스트)
+    // 공통: 뷰 전환
     // ==============================
-    // ✅ FIX 1) 상단 탭 버튼만 잡기 (성격테스트 A/B nav-btn가 섞이는 문제 해결)
     const navButtons = document.querySelectorAll('header .nav-tabs .nav-btn[data-view]');
 
     const viewVote = document.getElementById('view-vote');
@@ -898,11 +980,10 @@
       });
     });
 
-    // 기본 뷰
     showView('vote');
 
     // ==============================
-    // 🔥 기기 고유 ID 생성 (기기 1회 제한용)
+    // 🔥 기기 고유 ID 생성
     // ==============================
     if (!localStorage.getItem("device_id")) {
       const rand = (crypto.randomUUID ? crypto.randomUUID() : String(Math.random()).slice(2));
@@ -911,7 +992,7 @@
     const deviceId = localStorage.getItem("device_id");
 
     // ==============================
-    // 2. 기본 질문 데이터 (최초 1회용)
+    // 2. 기본 질문 데이터
     // ==============================
     const defaultQuestions = [
       { id: "q1_sleep_desk", tag: "Q1", title: "쉬는 시간마다 책상에 엎드려 잠자는 학생은 누구인가요?", desc: "" },
@@ -947,17 +1028,6 @@
       { id: "q31_relaxed", tag: "Q31", title: "가장 여유롭고 느긋해 보이는 학생은 누구인가요?", desc: "" }
     ];
 
-    // DB 구조:
-    // /questions/{id}
-    // /votes/{questionId}/{name}
-    // /hiddenNames/{questionId}/{name}
-    // /deviceVotes/{questionId}/{deviceId}
-    // /letters/{letterId}
-    // /letterReplies/{letterId}/{replyId}
-    // /cheongunLetters/{letterId}
-    // /cheongunDevice/{deviceId} = letterId
-    // /personalityParticipants/{pushId}
-
     let questions = [];
     let currentQuestionId = null;
     let voteData = {};
@@ -989,28 +1059,18 @@
 
     function findInitialPage() {
       const totalPages = Math.ceil(questions.length / PAGE_SIZE);
-      if (totalPages === 0) {
-        questionPage = 0;
-        return;
-      }
+      if (totalPages === 0) { questionPage = 0; return; }
 
       let chosen = 0;
       for (let p = 0; p < totalPages; p++) {
         const slice = getPageQuestions(p);
         const hasUnvoted = slice.some(q => !votedQuestions.has(q.id));
-        if (hasUnvoted) {
-          chosen = p;
-          break;
-        } else {
-          chosen = totalPages - 1;
-        }
+        if (hasUnvoted) { chosen = p; break; }
+        else { chosen = totalPages - 1; }
       }
       questionPage = chosen;
     }
 
-    // ==============================
-    // 3. 질문 로딩
-    // ==============================
     function initQuestionsFromFirebase() {
       const qRef = db.ref('questions');
 
@@ -1021,11 +1081,7 @@
             questions = Object.entries(val)
               .filter(([, v]) => v && v.active !== false)
               .map(([id, v]) => ({
-                id,
-                tag: v.tag,
-                title: v.title,
-                desc: v.desc,
-                active: v.active !== false
+                id, tag: v.tag, title: v.title, desc: v.desc, active: v.active !== false
               }));
           } else {
             const updates = {};
@@ -1062,7 +1118,6 @@
         });
     }
 
-    // 투표 DOM
     const questionListEl = document.getElementById('question-list');
     const cardTagEl = document.getElementById('card-tag');
     const cardTitleEl = document.getElementById('card-title');
@@ -1088,7 +1143,6 @@
 
     function renderQuestionList() {
       questionListEl.innerHTML = '';
-
       const pageQuestions = getPageQuestions(questionPage);
 
       pageQuestions.forEach(q => {
@@ -1102,9 +1156,7 @@
           <div>${q.title}</div>
           <small>${q.tag}${isVoted ? ' · ✅ 투표완료' : ''}</small>
         `;
-        div.addEventListener('click', () => {
-          switchQuestion(q.id);
-        });
+        div.addEventListener('click', () => switchQuestion(q.id));
         questionListEl.appendChild(div);
       });
 
@@ -1126,23 +1178,14 @@
       const idx = slice.findIndex(q => q.id === currentQuestionId);
       const totalPages = Math.ceil(questions.length / PAGE_SIZE);
 
-      if (idx === -1) {
-        switchQuestion(slice[0].id);
-        return;
-      }
-
-      if (idx > 0) {
-        switchQuestion(slice[idx - 1].id);
-        return;
-      }
+      if (idx === -1) { switchQuestion(slice[0].id); return; }
+      if (idx > 0) { switchQuestion(slice[idx - 1].id); return; }
 
       if (idx === 0 && questionPage > 0) {
         questionPage--;
         renderQuestionList();
         const prevSlice = getPageQuestions(questionPage);
-        if (prevSlice.length > 0) {
-          switchQuestion(prevSlice[prevSlice.length - 1].id);
-        }
+        if (prevSlice.length > 0) switchQuestion(prevSlice[prevSlice.length - 1].id);
         return;
       }
 
@@ -1156,38 +1199,22 @@
       const idx = slice.findIndex(q => q.id === currentQuestionId);
       const totalPages = Math.ceil(questions.length / PAGE_SIZE);
 
-      if (idx === -1) {
-        switchQuestion(slice[0].id);
-        return;
-      }
-
-      if (idx < slice.length - 1) {
-        switchQuestion(slice[idx + 1].id);
-        return;
-      }
+      if (idx === -1) { switchQuestion(slice[0].id); return; }
+      if (idx < slice.length - 1) { switchQuestion(slice[idx + 1].id); return; }
 
       if (questionPage < totalPages - 1) {
         questionPage++;
         renderQuestionList();
         const nextSlice = getPageQuestions(questionPage);
-        if (nextSlice.length > 0) {
-          switchQuestion(nextSlice[0].id);
-        }
+        if (nextSlice.length > 0) switchQuestion(nextSlice[0].id);
         return;
       }
 
       alert("마지막 질문입니다!");
     }
 
-    const prevBtn = document.getElementById('prev-question-btn');
-    prevBtn.addEventListener('click', () => {
-      advanceToPrevQuestion();
-    });
-
-    const nextBtn = document.getElementById('next-question-btn');
-    nextBtn.addEventListener('click', () => {
-      advanceToNextQuestion();
-    });
+    document.getElementById('prev-question-btn').addEventListener('click', advanceToPrevQuestion);
+    document.getElementById('next-question-btn').addEventListener('click', advanceToNextQuestion);
 
     function detachCurrentListeners() {
       if (currentVotesRef) currentVotesRef.off();
@@ -1230,20 +1257,14 @@
       const total = Object.values(votes).reduce((a, b) => a + b, 0);
       totalVotesEl.textContent = total;
 
-      const entries = Object.entries(votes)
-        .filter(([name]) => !hidden[name]);
-
+      const entries = Object.entries(votes).filter(([name]) => !hidden[name]);
       entries.sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 
       rankingListEl.innerHTML = '';
-      if (entries.length === 0) {
-        rankingEmptyEl.style.display = 'block';
-        return;
-      }
+      if (entries.length === 0) { rankingEmptyEl.style.display = 'block'; return; }
       rankingEmptyEl.style.display = 'none';
 
-      const top5 = entries.slice(0, 5);
-      top5.forEach((item, index) => {
+      entries.slice(0, 5).forEach((item, index) => {
         const [name, count] = item;
         const div = document.createElement('div');
         div.className = 'rank-item';
@@ -1261,31 +1282,19 @@
     voteFormEl.addEventListener('submit', (e) => {
       e.preventDefault();
       const rawName = voteNameEl.value.trim();
-      if (!rawName) {
-        alert('투표할 사람의 이름 또는 닉네임을 입력해 주세요.');
-        return;
-      }
-      if (rawName.length > 20) {
-        alert('이름/닉네임은 20자 이하로 입력해 주세요.');
-        return;
-      }
+      if (!rawName) { alert('투표할 사람의 이름 또는 닉네임을 입력해 주세요.'); return; }
+      if (rawName.length > 20) { alert('이름/닉네임은 20자 이하로 입력해 주세요.'); return; }
       if (!currentQuestionId) return;
 
       const nameKey = rawName;
 
       const deviceRef = db.ref('deviceVotes/' + currentQuestionId + '/' + deviceId);
       deviceRef.once('value').then(deviceSnap => {
-        if (deviceSnap.exists()) {
-          alert('이 기기에서는 이미 이 질문에 투표했습니다!');
-          return;
-        }
+        if (deviceSnap.exists()) { alert('이 기기에서는 이미 이 질문에 투표했습니다!'); return; }
 
         const nameRef = db.ref('votes/' + currentQuestionId + '/' + nameKey);
         nameRef.once('value').then(nameSnap => {
-          if (nameSnap.exists()) {
-            alert('이 이름으로는 이미 투표했습니다!');
-            return;
-          }
+          if (nameSnap.exists()) { alert('이 이름으로는 이미 투표했습니다!'); return; }
 
           const updates = {};
           updates['votes/' + currentQuestionId + '/' + nameKey] = 1;
@@ -1293,10 +1302,8 @@
 
           db.ref().update(updates).then(() => {
             voteNameEl.value = '';
-
             markQuestionVoted(currentQuestionId);
             renderQuestionList();
-
             advanceToNextQuestion();
           }).catch(error => {
             console.error(error);
@@ -1308,11 +1315,7 @@
 
     // 관리자
     adminToggleEl.addEventListener('click', () => {
-      if (adminSectionEl.style.display === 'flex') {
-        adminSectionEl.style.display = 'none';
-      } else {
-        adminSectionEl.style.display = 'flex';
-      }
+      adminSectionEl.style.display = (adminSectionEl.style.display === 'flex') ? 'none' : 'flex';
     });
 
     adminLoginBtnEl.addEventListener('click', () => {
@@ -1333,18 +1336,13 @@
       updates['votes/' + currentQuestionId] = null;
       updates['deviceVotes/' + currentQuestionId] = null;
 
-      db.ref().update(updates).then(() => {
-        alert('투표가 초기화되었습니다.');
-      });
+      db.ref().update(updates).then(() => alert('투표가 초기화되었습니다.'));
     });
 
     hideNameBtnEl.addEventListener('click', () => {
       if (!currentQuestionId) return;
       const name = hideNameInputEl.value.trim();
-      if (!name) {
-        alert('숨길 이름/닉네임을 입력하세요.');
-        return;
-      }
+      if (!name) { alert('숨길 이름/닉네임을 입력하세요.'); return; }
       db.ref('hiddenNames/' + currentQuestionId + '/' + name).set(true);
       hideNameInputEl.value = '';
     });
@@ -1380,9 +1378,7 @@
       });
     });
 
-    // ==============================
-    // 7. 게시판 (게시글 + 답글 + 이미지 base64)
-    // ==============================
+    // 게시판
     const letterAnonEl = document.getElementById('letter-anon');
     const letterNameEl = document.getElementById('letter-name');
     const letterMessageEl = document.getElementById('letter-message');
@@ -1395,12 +1391,8 @@
     let repliesData = {};
 
     letterAnonEl.addEventListener('change', () => {
-      if (letterAnonEl.checked) {
-        letterNameEl.disabled = true;
-        letterNameEl.value = '';
-      } else {
-        letterNameEl.disabled = false;
-      }
+      if (letterAnonEl.checked) { letterNameEl.disabled = true; letterNameEl.value = ''; }
+      else { letterNameEl.disabled = false; }
     });
 
     function readFileAsDataURL(file) {
@@ -1412,6 +1404,10 @@
       });
     }
 
+    function escapeHtml(str) {
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
     letterFormEl.addEventListener('submit', async (e) => {
       e.preventDefault();
       const isAnonymous = letterAnonEl.checked;
@@ -1419,24 +1415,15 @@
       const message = letterMessageEl.value.trim();
       const file = letterImageEl.files[0];
 
-      if (!message) {
-        alert('게시글 내용을 입력해 주세요.');
-        return;
-      }
-      if (!isAnonymous && !nameInput) {
-        alert('익명이 아니라면 실명 또는 별명을 입력해 주세요.');
-        return;
-      }
+      if (!message) { alert('게시글 내용을 입력해 주세요.'); return; }
+      if (!isAnonymous && !nameInput) { alert('익명이 아니라면 실명 또는 별명을 입력해 주세요.'); return; }
 
       const displayName = isAnonymous ? '익명' : nameInput;
 
       try {
         const newRef = db.ref('letters').push();
-
         let imageData = null;
-        if (file) {
-          imageData = await readFileAsDataURL(file);
-        }
+        if (file) imageData = await readFileAsDataURL(file);
 
         await newRef.set({
           name: displayName,
@@ -1462,15 +1449,8 @@
 
     lettersRef.on('value', snapshot => {
       const val = snapshot.val();
-      if (!val) {
-        letters = [];
-        renderLetters();
-        return;
-      }
-      letters = Object.entries(val).map(([id, data]) => ({
-        id,
-        ...data
-      }));
+      if (!val) { letters = []; renderLetters(); return; }
+      letters = Object.entries(val).map(([id, data]) => ({ id, ...data }));
       letters.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
       renderLetters();
     });
@@ -1479,13 +1459,6 @@
       repliesData = snapshot.val() || {};
       renderLetters();
     });
-
-    function escapeHtml(str) {
-      return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-    }
 
     function renderLetters() {
       letterListEl.innerHTML = '';
@@ -1506,10 +1479,8 @@
         const letterId = item.id;
         const letterReplies = (repliesData && repliesData[letterId]) || {};
 
-        const replyArr = Object.entries(letterReplies).map(([rid, r]) => ({
-          id: rid,
-          ...r
-        })).sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
+        const replyArr = Object.entries(letterReplies).map(([rid, r]) => ({ id: rid, ...r }))
+          .sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
 
         let repliesHtml = '';
         replyArr.forEach(r => {
@@ -1549,8 +1520,7 @@
           <form class="reply-form hidden" data-letter-id="${letterId}">
             <div class="reply-form-row">
               <label style="display:flex;align-items:center;gap:4px;">
-                <input type="checkbox" class="reply-anon" checked>
-                익명
+                <input type="checkbox" class="reply-anon" checked> 익명
               </label>
             </div>
             <div class="reply-form-row">
@@ -1564,37 +1534,27 @@
         letterListEl.appendChild(div);
 
         const replyToggleBtn = div.querySelector('.reply-toggle');
-        const replyFormEl = div.querySelector('.reply-form');
-        const replyAnonEl = replyFormEl.querySelector('.reply-anon');
-        const replyNameEl = replyFormEl.querySelector('.reply-name');
-        const replyMsgEl = replyFormEl.querySelector('.reply-message-input');
+        const replyFormEl2 = div.querySelector('.reply-form');
+        const replyAnonEl = replyFormEl2.querySelector('.reply-anon');
+        const replyNameEl2 = replyFormEl2.querySelector('.reply-name');
+        const replyMsgEl = replyFormEl2.querySelector('.reply-message-input');
 
-        replyToggleBtn.addEventListener('click', () => {
-          replyFormEl.classList.toggle('hidden');
-        });
+        replyToggleBtn.addEventListener('click', () => replyFormEl2.classList.toggle('hidden'));
 
         replyAnonEl.addEventListener('change', () => {
-          if (replyAnonEl.checked) {
-            replyNameEl.disabled = true;
-            replyNameEl.value = '';
-          } else {
-            replyNameEl.disabled = false;
-          }
+          if (replyAnonEl.checked) { replyNameEl2.disabled = true; replyNameEl2.value = ''; }
+          else { replyNameEl2.disabled = false; }
         });
 
-        replyFormEl.addEventListener('submit', (e) => {
+        replyFormEl2.addEventListener('submit', (e) => {
           e.preventDefault();
           const isAnon = replyAnonEl.checked;
-          const nameVal = replyNameEl.value.trim();
+          const nameVal = replyNameEl2.value.trim();
           const msgVal = replyMsgEl.value.trim();
-          if (!msgVal) {
-            alert('답글 내용을 입력해 주세요.');
-            return;
-          }
-          if (!isAnon && !nameVal) {
-            alert('익명이 아니라면 이름 또는 별명을 입력해 주세요.');
-            return;
-          }
+
+          if (!msgVal) { alert('답글 내용을 입력해 주세요.'); return; }
+          if (!isAnon && !nameVal) { alert('익명이 아니라면 이름 또는 별명을 입력해 주세요.'); return; }
+
           const displayName = isAnon ? '익명' : nameVal;
           const ref = db.ref('letterReplies/' + letterId).push();
           ref.set({
@@ -1605,7 +1565,7 @@
             createdAt: firebase.database.ServerValue.TIMESTAMP
           }).then(() => {
             replyMsgEl.value = '';
-            if (!isAnon) replyNameEl.value = '';
+            if (!isAnon) replyNameEl2.value = '';
           }).catch(err => {
             console.error(err);
             alert('답글 저장 중 오류가 발생했습니다.');
@@ -1614,9 +1574,7 @@
       });
     }
 
-    // ==============================
-    // 8. 청운우체통 (한 기기 1회 제한)
-    // ==============================
+    // 청운우체통
     const cheongunInfoTextEl = document.getElementById('cheongun-info-text');
     const cheongunFormEl = document.getElementById('cheongun-form');
     const cheongunFromEl = document.getElementById('cheongun-from');
@@ -1650,14 +1608,8 @@
       const toName = cheongunToEl.value.trim();
       const message = cheongunMessageEl.value.trim();
 
-      if (!toName) {
-        alert('받는 사람을 입력해 주세요. (학번+이름 또는 닉네임)');
-        return;
-      }
-      if (!message) {
-        alert('편지 내용을 입력해 주세요.');
-        return;
-      }
+      if (!toName) { alert('받는 사람을 입력해 주세요. (학번+이름 또는 닉네임)'); return; }
+      if (!message) { alert('편지 내용을 입력해 주세요.'); return; }
 
       const deviceRef = db.ref('cheongunDevice/' + deviceId);
       deviceRef.once('value').then(snapshot => {
@@ -1699,9 +1651,7 @@
       });
     });
 
-    // ==============================
-    // 10. 성격유형 테스트 (이름/반 입력 + 유형 + 운명의 상대 매칭)
-    // ==============================
+    // 성격유형 테스트
     const pStart = document.getElementById('ptest-start');
     const pQuiz = document.getElementById('ptest-quiz');
     const pResult = document.getElementById('ptest-result');
@@ -1783,91 +1733,74 @@
       pBBtn.textContent = "B. " + q.B;
     }
 
-    function pickRandom(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];
-    }
-
     async function matchDestiny(typeLabel, myId) {
-  try {
-    const snap = await db.ref('personalityParticipants')
-      .orderByChild('type')
-      .equalTo(typeLabel)
-      .limitToLast(200)
-      .once('value');
+      try {
+        const snap = await db.ref('personalityParticipants')
+          .orderByChild('type')
+          .equalTo(typeLabel)
+          .limitToLast(200)
+          .once('value');
 
-    const val = snap.val() || {};
+        const val = snap.val() || {};
+        const candidates = Object.entries(val)
+          .filter(([id, p]) => p && id !== myId)
+          .map(([, p]) => p);
 
-    // ✅ 후보: 같은 유형 중 "방금 저장한 내 1건(myId)"만 제외
-    const candidates = Object.entries(val)
-      .filter(([id, p]) => p && id !== myId)
-      .map(([, p]) => p);
+        if (candidates.length === 0) {
+          pMatchTextEl.textContent = "아직 같은 유형 참가자가 부족해… 😭 조금 뒤에 다시 해줘!";
+          return;
+        }
 
-    if (candidates.length === 0) {
-      pMatchTextEl.textContent = "아직 같은 유형 참가자가 부족해… 😭 조금 뒤에 다시 해줘!";
-      return;
+        const partner = candidates[Math.floor(Math.random() * candidates.length)];
+        pMatchTextEl.innerHTML =
+          `당신과 같은 <b>${escapeHtml(typeLabel)}</b> 유형 중 한 명!<br>` +
+          `👉 <b>${escapeHtml(partner.name)}</b> (${escapeHtml(partner.className)})<br><br>` +
+          `“운명의 상대”는 재미용 매칭이야 😄`;
+      } catch (e) {
+        console.error(e);
+        pMatchTextEl.textContent = "매칭 중 오류가 났어. (DB 규칙/인덱스/권한 확인!)";
+      }
     }
 
-    const partner = candidates[Math.floor(Math.random() * candidates.length)];
+    async function finishPtest() {
+      const key = bitsToTypeKey();
+      const t = typeMap.find(x => x.key === key) || typeMap[0];
+      pUser.type = t.label;
 
-    pMatchTextEl.innerHTML =
-      `당신과 같은 <b>${escapeHtml(typeLabel)}</b> 유형 중 한 명!<br>` +
-      `👉 <b>${escapeHtml(partner.name)}</b> (${escapeHtml(partner.className)})<br><br>` +
-      `“운명의 상대”는 재미용 매칭이야 😄`;
-  } catch (e) {
-    console.error(e);
-    pMatchTextEl.textContent = "매칭 중 오류가 났어. (DB 규칙/인덱스/권한 확인!)";
-  }
-}
+      pResultTextEl.innerHTML =
+        `<b>${escapeHtml(pUser.name)}</b> (${escapeHtml(pUser.className)}) 님의 유형은 <b>${escapeHtml(t.label)}</b>!<br><br>` +
+        `${escapeHtml(t.desc)}<br><br>` +
+        `※ 결과는 재미용입니다 😄`;
 
+      showPtestSection('result');
 
-async function finishPtest() {
-  const key = bitsToTypeKey();
-  const t = typeMap.find(x => x.key === key) || typeMap[0];
-  pUser.type = t.label;
+      const ref = db.ref('personalityParticipants').push();
+      const myId = ref.key;
 
-  pResultTextEl.innerHTML =
-    `<b>${escapeHtml(pUser.name)}</b> (${escapeHtml(pUser.className)}) 님의 유형은 <b>${escapeHtml(t.label)}</b>!<br><br>` +
-    `${escapeHtml(t.desc)}<br><br>` +
-    `※ 결과는 재미용입니다 😄`;
+      const payload = {
+        name: pUser.name,
+        className: pUser.className,
+        type: pUser.type,
+        deviceId: deviceId,
+        createdAt: firebase.database.ServerValue.TIMESTAMP
+      };
 
-  showPtestSection('result');
-
-  // ✅ 참가자 저장 + "내 기록 id" 확보
-  const ref = db.ref('personalityParticipants').push();
-  const myId = ref.key;
-
-  const payload = {
-    name: pUser.name,
-    className: pUser.className,
-    type: pUser.type,
-    deviceId: deviceId,
-    createdAt: firebase.database.ServerValue.TIMESTAMP
-  };
-
-  await ref.set(payload);
-
-  // ✅ 같은 유형 중 랜덤 매칭 (내 1건만 제외)
-  matchDestiny(pUser.type, myId);
-}
-
+      await ref.set(payload);
+      matchDestiny(pUser.type, myId);
+    }
 
     function handleAnswer(choice) {
       const q = personalityQuestions[pIdx];
       if (choice === 'A') pScore[q.dim] = (pScore[q.dim] || 0) + 1;
 
       pIdx++;
-      if (pIdx >= personalityQuestions.length) {
-        finishPtest();
-      } else {
-        renderPQuestion();
-      }
+      if (pIdx >= personalityQuestions.length) finishPtest();
+      else renderPQuestion();
     }
 
-    // ✅ FIX 2) 성격유형 테스트 이벤트 리스너 추가
     pStartBtn.addEventListener('click', () => {
       const nm = pNameEl.value.trim();
       const cl = pClassEl.value.trim();
-
       if (!nm) { alert('이름/닉네임을 입력해 주세요.'); return; }
       if (!cl) { alert('반을 입력해 주세요.'); return; }
 
@@ -1884,25 +1817,13 @@ async function finishPtest() {
     pABtn.addEventListener('click', () => handleAnswer('A'));
     pBBtn.addEventListener('click', () => handleAnswer('B'));
 
-    pRestartBtn.addEventListener('click', () => {
-      resetPtest();
-      // 탭을 "테스트"에 유지하고 싶으면 아래 2줄도 사용 가능:
-      // showView('test');
-      // navButtons.forEach(b=>b.classList.remove('active')); document.querySelector('header .nav-tabs .nav-btn[data-view="test"]').classList.add('active');
-    });
+    pRestartBtn.addEventListener('click', resetPtest);
+    pAgainBtn.addEventListener('click', resetPtest);
 
-    pAgainBtn.addEventListener('click', () => {
-      resetPtest();
-    });
-
-    // ==============================
-    // 9. 시작
-    // ==============================
+    // 시작
     initQuestionsFromFirebase();
     resetPtest();
     initCheongun();
   </script>
 </body>
 </html>
-
-
